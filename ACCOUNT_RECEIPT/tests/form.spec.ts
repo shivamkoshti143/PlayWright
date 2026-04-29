@@ -1,11 +1,12 @@
 import { test } from '@playwright/test';
 import * as XLSX from 'xlsx';
 import { doLogin } from './uatLogin.spec';
+import { doProdLogin } from './prodLogin.spec';
 
 test('Read Excel and Fill Account Receipt Form', async ({ page }) => {
   test.setTimeout(0);
 
-  await doLogin(page);
+  await doProdLogin(page);
 
   // Open page
   await page.getByRole('link', { name: 'Citizen Facilitation Centre' }).click();
