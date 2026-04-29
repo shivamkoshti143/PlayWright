@@ -1,0 +1,30 @@
+import { test, expect } from '@playwright/test';
+
+test('test', async ({ page }) => {
+  await page.goto('http://103.41.33.174/Skdcl/MainetService/Home.html');
+  await page.getByTitle('English ').click();
+  await page.getByRole('textbox', { name: 'User ID' }).click();
+  await page.getByRole('textbox', { name: 'User ID' }).fill('JEWT002');
+  await page.getByRole('textbox', { name: 'User ID' }).press('Tab');
+  await page.getByRole('textbox', { name: 'Password' }).fill('Mba@1234');
+  await page.getByRole('button', { name: 'Submit' }).click();
+  await page.getByRole('link', { name: 'Water Tax' }).click();
+  await page.locator('div').filter({ hasText: 'Kalyan Dombivli Municipal' }).nth(4).click();
+  await page.locator('[id="844"]').getByRole('link', { name: 'Meter Bill Printing' }).click();
+  await page.getByLabel('Ward:').selectOption('500000003');
+  await page.getByLabel('Zone:').selectOption('600000001');
+  await page.getByLabel('From Date (DD/MM/YYYY):').selectOption('17/10/2024');
+  await page.getByLabel('To Date (DD/MM/YYYY):').selectOption('30/10/2025');
+  await page.getByRole('radio', { name: 'Input' }).check();
+  await page.getByRole('textbox', { name: 'Input text' }).fill('A010002706');
+  await page.getByRole('cell', { name: 'Start Bill No.: *', exact: true }).click();
+  await page.getByLabel('Start Bill No.:').selectOption('105550389');
+  await page.getByLabel('Last Bill No.:').selectOption('105673832');
+  await page.getByLabel('Bill Count:').selectOption('2');
+  await page.getByRole('textbox', { name: 'Bill Print Start Seqeunce: *' }).click();
+  await page.getByRole('textbox', { name: 'Bill Print Start Seqeunce: *' }).fill('1');
+  await page.getByRole('textbox', { name: 'Bill Print End Seqeunce: *' }).click();
+  await page.getByRole('textbox', { name: 'Bill Print End Seqeunce: *' }).fill('2');
+  await page.getByRole('button', { name: 'OK' }).click();
+  await page.getByRole('button', { name: 'Last page' }).click();
+});

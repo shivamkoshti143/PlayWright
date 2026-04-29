@@ -1,0 +1,46 @@
+import { test, expect } from '@playwright/test';
+
+test('test', async ({ page }) => {
+  // Recording...
+  await page.goto('http://103.41.33.174/Skdcl/MainetService/Home.html');
+  await page.getByTitle('English').click();
+  await page.getByRole('textbox', { name: 'Password' }).click();
+  await page.getByRole('textbox', { name: 'Password' }).fill('Mba@1234');
+  await page.getByRole('button', { name: 'Submit' }).click();
+  await page.getByRole('link', { name: 'Water Tax' }).click();
+  await page.getByRole('link', { name: 'Manual Receipt Entry' }).click();
+  await page.getByRole('textbox', { name: ': Connection Number *' }).click();
+  await page.getByRole('textbox', { name: ': Connection Number *' }).fill('A010005166');
+  await page.getByRole('textbox', { name: ': Manual Receipt Date *' }).click();
+  await page.getByRole('link', { name: '27' }).click();
+  await page.getByRole('button', { name: ' Search' }).click();
+  await page.goto('http://103.41.33.174/Skdcl/MainetService/WaterBillPayment.html?serachWaterBillPayment');
+  await page.locator('div').filter({ hasText: 'Kalyan Dombivli Municipal' }).nth(4).click();
+  await page.getByRole('textbox', { name: ': Manual Receipt No *' }).click();
+  await page.getByRole('textbox', { name: ': Manual Receipt No *' }).fill('789');
+  await page.locator('#payAmount').click();
+  await page.locator('#payAmount').fill('9367');
+  await page.getByRole('button', { name: 'Choose File' }).click();
+  await page.getByRole('button', { name: 'Choose File' }).setInputFiles('Nagar Nigam Aligarh.pdf');
+  await page.getByLabel('Collection Mode').selectOption('119');
+  await page.getByLabel('Collection Mode').selectOption('120');
+  await page.locator('a').filter({ hasText: /^Select$/ }).click();
+  await page.locator('#bankID_chosen').getByText('ABHYUDAYA COOPERATIVE BANK LIMITED - ABHY0065001 - 560226001 - RTGS HO').click();
+  await page.getByRole('textbox', { name: ': Account No. *' }).click();
+  await page.getByRole('textbox', { name: ': Account No. *' }).fill('34567');
+  await page.getByRole('textbox', { name: 'dd/MM/yyyy' }).click();
+  await page.getByRole('link', { name: '27' }).click();
+  await page.getByRole('textbox', { name: ': Cheque/ DD No. *' }).click();
+  await page.getByRole('textbox', { name: ': Cheque/ DD No. *' }).click();
+  await page.getByRole('textbox', { name: ': Cheque/ DD No. *' }).press('ArrowDown');
+  await page.getByRole('textbox', { name: ': Cheque/ DD No. *' }).press('ArrowDown');
+  await page.getByRole('textbox', { name: ': Cheque/ DD No. *' }).press('ArrowDown');
+  await page.getByRole('textbox', { name: ': Cheque/ DD No. *' }).press('ArrowDown');
+  await page.getByRole('textbox', { name: ': Cheque/ DD No. *' }).click();
+  await page.getByRole('textbox', { name: ': Cheque/ DD No. *' }).fill('567789');
+  await page.getByRole('button', { name: 'Submit' }).click();
+  await page.locator('div').filter({ hasText: 'Payment done successfully.' }).first().click();
+  const page1Promise = page.waitForEvent('popup');
+  await page.getByRole('button', { name: 'Proceed' }).click();
+  const page1 = await page1Promise;
+});
