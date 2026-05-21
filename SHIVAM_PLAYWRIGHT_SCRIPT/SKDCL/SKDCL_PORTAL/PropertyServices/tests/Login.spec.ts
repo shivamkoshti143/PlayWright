@@ -1,5 +1,6 @@
 import { test, expect } from '@playwright/test';
 import { Page } from '@playwright/test';
+import path from 'path';
 
 export async function doLogin(page: Page) {
   test.setTimeout(0);
@@ -45,4 +46,7 @@ export async function doLogin(page: Page) {
   console.log('Language changed to English Successfully');
   await page.waitForTimeout(2000);
   // Continue your next steps here
+}
+export function selectFile(fileName: string): string {
+    return path.join(__dirname, 'assets', fileName);
 }
