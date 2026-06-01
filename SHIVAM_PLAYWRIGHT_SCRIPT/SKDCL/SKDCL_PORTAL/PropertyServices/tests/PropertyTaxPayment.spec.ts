@@ -3,8 +3,7 @@ import { doLogin } from './Login.spec';
 
 test('PropertyTaxPayment', async ({ page }) => {
   test.setTimeout(0);
-    // Read Excel
-  
+    // Read Excel  
     await doLogin(page);
   
     await page.getByRole('link', { name: 'Citizen Services' }).click();
@@ -17,15 +16,12 @@ test('PropertyTaxPayment', async ({ page }) => {
   await page.getByRole('radio', { name: 'Online' }).check();
   await page.getByRole('button', { name: 'Submit' }).click();
 
-
   await page.getByRole('button', { name: 'Proceed' }).click();
   await page.locator('#paymobile2').click();
   await page.locator('#paymobile2').fill('9157285139');
 
-
   await page.locator('#payeemail2').click();
   await page.locator('#payeemail2').fill('sample@gmail.com');
-
 
   await page.locator('#cbBankid').selectOption('2');
   await page.getByRole('button', { name: 'Pay' }).click();
