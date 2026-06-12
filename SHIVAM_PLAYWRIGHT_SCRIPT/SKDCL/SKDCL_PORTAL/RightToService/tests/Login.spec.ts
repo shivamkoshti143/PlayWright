@@ -5,14 +5,14 @@ import path from 'path';
 export async function doLogin(page: Page) {
   test.setTimeout(0);
 
-  await page.goto('http://103.41.33.174:8069/CitizenHome.html');
+  await page.goto('http://uat-mainet.kdmc.gov.in/CitizenHome.html');
 
   await page.getByRole('link', { name: 'लॉगिन' }).click();
   await page.getByRole('link', { name: 'नागरिक लॉगइन' }).click();
   await page.getByRole('textbox', { name: 'Login id' }).click();
-  await page.getByRole('textbox', { name: 'Login id' }).fill('8208487562');
+  await page.getByRole('textbox', { name: 'Login id' }).fill('9762977870');
   await page.getByRole('textbox', { name: 'Password' }).click();
-  await page.getByRole('textbox', { name: 'Password' }).fill('Mba@1234');
+  await page.getByRole('textbox', { name: 'Password' }).fill('Pass@123');
 
   console.log('Please enter captcha manually...');
 
